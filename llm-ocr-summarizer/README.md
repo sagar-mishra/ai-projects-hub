@@ -2,9 +2,8 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [Data Sources](#data-sources)
 * [Technologies](#technologies)
-* [Setup](#setup)
+* [Setup](#setup).
 * [Directory Structure](#directory-structure)
 
 ## General info
@@ -18,11 +17,10 @@ This project leverages LLM models (llava, gemma3, llama3.2-vision) capabilities 
 ## Setup
 ### Installation 
 * Download and install Ollama from https://ollama.com/
-* Run commands:
-  <br>
-  ollama pull llama3.2-vision<br>
-  ollama pull llava<br>
-  ollama pull gemma3:4b<br>
+* run commands: 
+    ollama pull llama3.2-vision
+    ollama pull llava
+    ollama pull gemma3:4b
 * pip install -r requirements.txt
 
 ## Directory structure
