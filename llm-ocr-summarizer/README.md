@@ -20,11 +20,7 @@ This project leverages LLM models (llava, gemma3, llama3.2-vision) capabilities 
 ### Installation 
 * Download and install Ollama from https://ollama.com/
 * Run commands:
-  <li>
-      <ul>ollama pull llama3.2-vision</ul>
-      <ul>ollama pull llava</ul>
-      <ul>ollama pull gemma3:4b</ul>
-  </li>
+  <br>
   ollama pull llama3.2-vision<br>
   ollama pull llava<br>
   ollama pull gemma3:4b<br>
