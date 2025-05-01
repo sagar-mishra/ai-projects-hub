@@ -4,7 +4,7 @@
 * [General info](#general-info)
 * [Data Sources](#data-sources)
 * [Technologies](#technologies)
-* [Setup](#setup).
+* [Setup](#setup)
 * [Directory Structure](#directory-structure)
 
 ## General info
