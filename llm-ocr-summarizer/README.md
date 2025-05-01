@@ -6,7 +6,6 @@
 * [Technologies](#technologies)
 * [Setup](#setup).
 * [Directory Structure](#directory-structure)
-* [Model Training Steps](#model-training-steps)
 
 ## General info
 This project leverages LLM models (llava, gemma3, llama3.2-vision) capabilities and Streamlit to create a 100% locally running computer vision app that can perform OCR, extract structured text from the image and summzarize extracted text.
