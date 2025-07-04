@@ -9,6 +9,34 @@
 * [Running the App](#running-the-app)
 
 ## General info
+<b>🧠 What is Prompt Caching?</b>
+
+Prompt caching is a technique used to store and reuse LLM responses for previously seen prompts, avoiding redundant computation and reducing response latency.
+
+Instead of sending the same prompt repeatedly to the LLM:
+<ul>
+    <li>The system first checks a cache (in this case, an SQLite database)</li>
+    <li>If the prompt was seen before, the cached response is returned instantly</li>
+    <li>Otherwise, the LLM is queried, and the new result is stored in the cache for future use</li>
+    <li>Otherwise, the LLM is queried, and the new result is stored in the cache for future use</li>
+</ul>
+
+This project uses LangChain’s caching system to manage cached responses efficiently with:
+<ul>
+    <li>SQLiteCache: a lightweight local cache for development/testing</li>
+    <li>Cache lookup happens transparently before every prompt execution</li>
+    <li>Latency-based detection (< 100ms) is used to infer HIT/MISS in real time</li>
+</ul>
+
+✅ Benefits of Prompt Caching<br>
+⚡ Speed: Cached responses are returned almost instantly
+
+🧠 Efficiency: Reduces repeated LLM compute calls
+
+💵 Cost-saving: (In API-based setups) prevents redundant billing
+
+🔁 Reproducibility: Same prompt always gives same cached result (unless cleared)
+
 A local, fully offline LangChain + Ollama-powered app to demonstrate prompt caching, visualize cache hits/misses, and benchmark prompt latency — with a real-time UI built using Streamlit.
 
 ---
@@ -59,27 +87,24 @@ promptcache-playground/
 ├── .cache/                 # LangChain SQLite cache (auto-created)
 
 ## 🛠️ How It Works
-🔁 Prompt Caching via LangChain
-Uses SQLiteCache from LangChain
+<b>🔁 Prompt Caching via LangChain</b>
+<ul>
+    <li>Uses SQLiteCache from LangChain</li>
+    <li>When a prompt is run:</li>
+    <ul>
+        <li>If cached: fetch from SQLite</li>
+        <li>If not: LLM is invoked, and response cached</li>
+    </ul>
+    <li>LLM used: Ollama(model="mistral") (can be changed)</li>
+</ul>
 
-When a prompt is run:
+<b>🕵️ HIT/MISS Detection</b>
+<ul>
+    <li>Uses latency threshold (100ms) to infer if cache was hit</li>
+    
+</ul>
 
-If cached: fetch from SQLite
-
-If not: LLM is invoked, and response cached
-
-LLM used: Ollama(model="mistral") (can be changed)
-
-
-
-🕵️ HIT/MISS Detection
-Uses latency threshold (100ms) to infer if cache was hit
-
-Alternatively, can use direct DB checks with lookup() (see advanced notes)
-
-
-
-📝 Logging
+<b>📝 Logging</b>
 All prompt runs are logged in cache_log.csv
 
 ## ▶️ Running the App
