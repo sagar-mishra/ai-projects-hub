@@ -1,0 +1,5 @@
+fastmcp
+langchain
+langchain-community
+streamlit
+ollama
