@@ -1,0 +1,4 @@
+trained_model_weights/
+architecture/
+.vscode/
+__pycache__

@@ -1,0 +1,9 @@
+app:
+  name: covid-detection
+  env: dev
+  namespace: covid-detection-app
+  image: gcr.io/covid-detection-319916/mishrasagar25/covid-detection-api
+
+replicas: 2
+containerPort: 5000
+targetPort: 5000
