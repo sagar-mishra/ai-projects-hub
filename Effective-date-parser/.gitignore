@@ -1,0 +1,5 @@
+__pycache__/
+notebooks/cache_dir/
+notebooks/train.ipynb
+notebooks/data_creation.ipynb
+notebooks/model_output_processing.ipynb
