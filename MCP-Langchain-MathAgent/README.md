@@ -94,9 +94,5 @@ Assistant:<br></li>
 <li>LLM Response: divide(25, 5) → 5</li>
 <li>Output: Streamlit shows result</li>
 </ol>
-UI Input: User enters: "What is 25 divided by 5?"
 
-Agent Fetches Tools: client.get_tools_summary() → [add(), subtract(), divide(), ...]
-
-LangChain Prompting:
 
