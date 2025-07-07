@@ -38,19 +38,19 @@ This app uses **LangChain's `FlashrankRerank`** via `ContextualCompressionRetrie
 
 ## 🗂️ Project Structure
 
-flashrank-rag-pipeline/
-├── app.py # Streamlit UI
-├── indexer.py # Builds & clears FAISS index
-├── rag_chain.py # RAG chain wrapper
-├── requirements.txt # Python dependencies
-├── data/
-│ └── sample.txt # Your input document
-└── retriever/
-  └── retriever.txt # FAISS retriever
-  └── contextual_reranker.py # FlashRank + compression retriever
+flashrank-rag-pipeline/ <br>
+├── app.py # Streamlit UI <br>
+├── indexer.py # Builds & clears FAISS index <br>
+├── rag_chain.py # RAG chain wrapper <br>
+├── requirements.txt # Python dependencie <br>
+├── data/ <br>
+│ └── sample.txt # Your input document <br>
+└── retriever/ <br>
+│ └── retriever.txt # FAISS retriever <br> 
+│ └── contextual_reranker.py # FlashRank + compression retriever <br>
 
 
---
+---
 
 ## 🧠 Usage
 
