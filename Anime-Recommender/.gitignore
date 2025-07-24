@@ -1,0 +1,6 @@
+Anime_Recommeder.egg-info/
+__pycache__/
+*.pyc
+logs/
+chroma_db/
+.env

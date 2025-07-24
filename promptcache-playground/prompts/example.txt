@@ -1,0 +1,3 @@
+What is the capital of France?
+Explain the concept of transformers in AI.
+List 3 benefits of prompt caching in LLM applications.
