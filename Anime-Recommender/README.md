@@ -1,6 +1,6 @@
 # Anime-Recommender System
 
-An interactive AI-powered Anime Recommender System assistant that uses **LangChain**, **Groq**, and the **Streamlit** framework to recommend anime — all running **locally**. 
+An interactive LLM-powered Anime Recommender System assistant that uses **LangChain**, **Groq**, and the **Streamlit** framework to recommend anime — all running **locally**. 
 
 
 
@@ -19,26 +19,26 @@ An interactive AI-powered Anime Recommender System assistant that uses **LangCha
 
 ## 📁 Folder Structure
 Anime-Recommender/ <br>
-├── data/ <br>     
+├── data/   
 │   ├── anime_with_synopsis.csv <br>
-├── app/ <br>     
-│   ├── app.py # Stremlit UI <br>     
-├── config/ <br>     
-│   ├── config.py <br>   
-├── logs/ <br>     
-│   ├── logs.txt ...... <br>   
-├── pipeline/ <br>     
-│   ├── build_pipeline.py # load data and create vector store pipeline<br>   
-│   ├── build_pipeline.py # get recommendation pipeline<br>
-├── src/ <br>     
-│   ├── data_loader.py # load data <br>   
-│   ├── prompt_template.py # prompt creation<br>
-│   ├── recommender.py # recommendation logic <br>   
-│   ├── vector_store.py # vectore store build and load logic<br>
-├── utils/ <br>     
-│   ├── custom_exception.py<br>   
-│   ├── logger.py<br>
-├── requirements.txt <br>   
+├── app/   
+│   ├── app.py # Stremlit UI <br>
+├── config/  
+│   ├── config.py <br>
+├── logs/   
+│   ├── logs.txt ...... <br>
+├── pipeline/    
+│   ├── build_pipeline.py # load data and create vector store pipeline <br>
+│   ├── build_pipeline.py # get recommendation pipeline <br>
+├── src/    
+│   ├── data_loader.py # load data   <br>  
+│   ├── prompt_template.py # prompt creation<br> 
+│   ├── recommender.py # recommendation logic   <br> 
+│   ├── vector_store.py # vectore store build and load logic<br> 
+├── utils/    
+│   ├── custom_exception.py  <br> 
+│   ├── logger.py<br> 
+├── requirements.txt <br>  
 ├── setup.py <br>   
 
 
