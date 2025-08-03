@@ -1,0 +1,16 @@
+langchain
+langchain-community
+langchain_groq
+chromadb
+streamlit
+pandas
+python-dotenv
+sentence-transformers
+langchain_huggingface
+unstructured[all-docs]
+pillow
+pydantic
+lxml
+tiktoken
+matplotlib
+watermark
