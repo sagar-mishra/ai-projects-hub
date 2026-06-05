@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+langgraph
+langchain-openai
+langchain-community
+langchain-groq
+duckduckgo-search
+httpx
+apscheduler
+pytest
+pytest-asyncio
+numexpr
+pydantic-settings
+python-dotenv
+websockets

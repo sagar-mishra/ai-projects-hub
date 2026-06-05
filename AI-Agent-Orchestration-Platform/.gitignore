@@ -1,0 +1,77 @@
+# ==========================================
+# Python & Virtual Environments
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+include/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+nosetests.xml
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test databases
+test_platform.db
+
+# ==========================================
+# Node / Frontend Build
+# ==========================================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.parcel-cache
+
+# ==========================================
+# Database & Local State
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+data/
+backend/data/
+
+# ==========================================
+# Environment Configuration & Secrets
+# ==========================================
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# ==========================================
+# OS System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+PLAN.md

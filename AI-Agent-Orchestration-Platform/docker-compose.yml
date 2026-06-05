@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: yuno_backend
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./data/platform.db
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_BACKEND_URL=${BACKEND_URL:-http://localhost:8000}
+    container_name: yuno_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+

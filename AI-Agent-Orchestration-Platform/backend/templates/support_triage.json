@@ -1,0 +1,64 @@
+{
+  "name": "Support Triage",
+  "description": "Conditional routing: Classifier categorizes messages and routes complaints/FAQ, escalating issues using a Human-in-the-Loop node.",
+  "agents": [
+    {
+      "name": "Classifier",
+      "role": "Router",
+      "description": "Classifies incoming requests",
+      "system_prompt": "You are a customer support dispatcher. Classify the user message into one of three categories: FAQ, COMPLAINT, or ESCALATE. Your response must contain only the category name in capital letters.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[]",
+      "memory_enabled": false,
+      "max_tokens": 100,
+      "temperature": 0.0,
+      "max_iterations": 3
+    },
+    {
+      "name": "FAQ Bot",
+      "role": "Helper",
+      "description": "Answers FAQs",
+      "system_prompt": "You are a friendly support assistant. Answer the user's question clearly. Use the calculator tool if they need any calculations.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[\"calculator\"]",
+      "memory_enabled": true,
+      "max_tokens": 500,
+      "temperature": 0.5,
+      "max_iterations": 3
+    },
+    {
+      "name": "Resolver",
+      "role": "Agent",
+      "description": "Resolves user complaints",
+      "system_prompt": "You are a customer service resolver. Address the user's complaint with empathy, offer a standard discount code PIKA10, and explain how we will resolve their issue.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[]",
+      "memory_enabled": true,
+      "max_tokens": 500,
+      "temperature": 0.7,
+      "max_iterations": 3
+    }
+  ],
+  "graph_json_template": {
+    "nodes": [
+      { "id": "trigger", "type": "trigger", "position": { "x": 250, "y": 50 }, "data": { "label": "Trigger" } },
+      { "id": "classifier", "type": "agent", "agent_name": "Classifier", "position": { "x": 250, "y": 150 }, "data": { "label": "Classifier" } },
+      { "id": "check_category", "type": "condition", "position": { "x": 250, "y": 250 }, "data": { "label": "Category Router" } },
+      { "id": "faq_bot", "type": "agent", "agent_name": "FAQ Bot", "position": { "x": 50, "y": 350 }, "data": { "label": "FAQ Bot" } },
+      { "id": "resolver", "type": "agent", "agent_name": "Resolver", "position": { "x": 250, "y": 350 }, "data": { "label": "Resolver" } },
+      { "id": "escalate_approval", "type": "approval", "question": "Escalate this request to human operator?", "position": { "x": 450, "y": 350 }, "data": { "label": "Approval Gate" } },
+      { "id": "end", "type": "end", "position": { "x": 250, "y": 480 }, "data": { "label": "End" } }
+    ],
+    "edges": [
+      { "from": "trigger", "to": "classifier" },
+      { "from": "classifier", "to": "check_category" },
+      { "from": "check_category", "to": "faq_bot", "when": "FAQ" },
+      { "from": "check_category", "to": "resolver", "when": "COMPLAINT" },
+      { "from": "check_category", "to": "escalate_approval", "when": "ESCALATE" },
+      { "from": "escalate_approval", "to": "resolver", "when": "approved" },
+      { "from": "escalate_approval", "to": "faq_bot", "when": "rejected" },
+      { "from": "faq_bot", "to": "end" },
+      { "from": "resolver", "to": "end" }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Research Pipeline",
+  "description": "Linear multi-agent pipeline: Researcher searches web, Fact Checker verifies facts, Summarizer formats findings.",
+  "agents": [
+    {
+      "name": "Researcher",
+      "role": "Web Searcher",
+      "description": "Searches the web for structured facts",
+      "system_prompt": "You are a detailed researcher. Use the web_search tool to look up information. Provide a detailed write-up of your search findings. Include URLs.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[\"web_search\"]",
+      "memory_enabled": true,
+      "max_tokens": 1000,
+      "temperature": 0.7,
+      "max_iterations": 5
+    },
+    {
+      "name": "Fact Checker",
+      "role": "Verifier",
+      "description": "Verifies facts and claims against search results",
+      "system_prompt": "You are a strict fact checker. Review the previous search findings. Use the web_search tool to check any suspicious claims. Present a corrected list of verified facts, noting any inaccuracies you corrected.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[\"web_search\"]",
+      "memory_enabled": true,
+      "max_tokens": 1000,
+      "temperature": 0.3,
+      "max_iterations": 5
+    },
+    {
+      "name": "Summarizer",
+      "role": "Report Writer",
+      "description": "Summarizes reports into clear briefings",
+      "system_prompt": "You are a concise writer. Summarize the verified facts into a polished final Markdown report with sections: Overview, Key Findings, and Sources.",
+      "model": "llama-3.1-8b-instant",
+      "tools_json": "[]",
+      "memory_enabled": true,
+      "max_tokens": 1000,
+      "temperature": 0.5,
+      "max_iterations": 3
+    }
+  ],
+  "graph_json_template": {
+    "nodes": [
+      { "id": "trigger", "type": "trigger", "position": { "x": 250, "y": 50 }, "data": { "label": "Trigger: User Message" } },
+      { "id": "researcher", "type": "agent", "agent_name": "Researcher", "position": { "x": 250, "y": 150 }, "data": { "label": "Researcher" } },
+      { "id": "fact_checker", "type": "agent", "agent_name": "Fact Checker", "position": { "x": 250, "y": 250 }, "data": { "label": "Fact Checker" } },
+      { "id": "summarizer", "type": "agent", "agent_name": "Summarizer", "position": { "x": 250, "y": 350 }, "data": { "label": "Summarizer" } },
+      { "id": "end", "type": "end", "position": { "x": 250, "y": 450 }, "data": { "label": "End" } }
+    ],
+    "edges": [
+      { "from": "trigger", "to": "researcher" },
+      { "from": "researcher", "to": "fact_checker" },
+      { "from": "fact_checker", "to": "summarizer" },
+      { "from": "summarizer", "to": "end" }
+    ]
+  }
+}
